@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    :root { --apple-blue: #0071e3; --apple-gray: #86868b; }
+    body { width: 380px; padding: 16px; font-family: -apple-system, sans-serif; background: #f5f5f7; color: #1d1d1f; margin: 0; }
+    .container { display: flex; flex-direction: column; gap: 12px; }
+    .title { font-size: 15px; font-weight: 600; }
+    .config-card { background: #fff; padding: 12px; border-radius: 10px; border: 1px solid #d2d2d7; }
+    .label { font-size: 11px; color: var(--apple-gray); margin-bottom: 6px; display: block; }
+    input#formatInput { width: 100%; padding: 8px; border: 1px solid #d2d2d7; border-radius: 6px; font-family: monospace; font-size: 12px; box-sizing: border-box; }
+    textarea { width: 100%; height: 80px; padding: 10px; border: 1px solid #d2d2d7; border-radius: 8px; font-family: monospace; font-size: 11px; box-sizing: border-box; outline: none; }
+    .primary-btn { width: 100%; padding: 10px; background: var(--apple-blue); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; }
+    .source-list { max-height: 200px; overflow-y: auto; border: 1px solid #e5e5e5; border-radius: 10px; background: white; margin-top: 5px; }
+    .source-item { display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #f2f2f2; }
+    .source-item.active { background: #f0f7ff; }
+    .checkbox-wrapper { cursor: pointer; margin-right: 10px; }
+    .checkbox { width: 16px; height: 16px; border: 2px solid #d2d2d7; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+    .source-item.active .checkbox { background: var(--apple-blue); border-color: var(--apple-blue); }
+    .source-item.active .checkbox::after { content: '✓'; color: white; font-size: 10px; }
+    .item-info { flex-grow: 1; overflow: hidden; }
+    .item-name { font-size: 12px; font-weight: 500; border: none; background: transparent; width: 100%; outline: none; }
+    .btn-del { color: #ff3b30; font-size: 11px; border: none; background: none; cursor: pointer; opacity: 0.6; }
+    .footer-tip { font-size: 10px; color: var(--apple-gray); text-align: center; line-height: 1.4; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">数据中心</div>
+    <div class="config-card">
+      <span class="label">展示格式 (空则全显, 支持: {[0]} {[2]} 等)</span>
+      <input type="text" id="formatInput" placeholder="默认空格隔开全部">
+    </div>
+    <textarea id="dataInput" placeholder="在此粘贴原始数据..."></textarea>
+    <button class="primary-btn" id="addBtn">立即保存并打标</button>
+    <div class="source-list" id="sourceList"></div>
+    <div class="footer-tip">勾选激活 • 双击名称修改 • 多标签支持</div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
